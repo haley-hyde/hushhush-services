@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hush hush ltd. · services &amp; pricing</title>
+<meta name="description" content="Creative intelligence for growing brands. Social coordination, shaping, and content partnership from Hush Hush Ltd., Longmont, Colorado.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#000000;
+    --surface:#0B0B0B;
+    --surface-raised:#111111;
+    --ink:#FFFFFF;
+    --muted:#9A9A9A;
+    --muted-dim:#6E6E6E;
+    --rule:rgba(255,255,255,0.14);
+    --rule-soft:rgba(255,255,255,0.08);
+    --max:1240px;
+    --radius-card:20px;
+    --radius-pill:999px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *,*::before,*::after{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,h4{
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    line-height:1.1;
+    letter-spacing:-0.02em;
+    margin:0;
+  }
+
+  a{ color:inherit; }
+  img{ max-width:100%; display:block; }
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 40px;
+  }
+
+  .kicker{
+    font-size:14px;
+    color:var(--muted);
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+  .kicker::before{ content:">"; color:var(--muted-dim); }
+
+  /* Skip link */
+  .skip-link{
+    position:absolute; left:-9999px; top:0;
+    background:var(--ink); color:var(--bg);
+    padding:12px 20px; z-index:200;
+    font-size:13px; font-weight:600;
+  }
+  .skip-link:focus{ left:16px; top:16px; }
+
+  a:focus-visible, button:focus-visible, summary:focus-visible{
+    outline:2px solid var(--ink);
+    outline-offset:3px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(0,0,0,0.86);
+    backdrop-filter:saturate(140%) blur(8px);
+    border-bottom:1px solid var(--rule-soft);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    height:84px;
+  }
+  .wordmark{
+    font-weight:600;
+    font-size:17px;
+    letter-spacing:-0.01em;
+    text-decoration:none;
+    color:var(--ink);
+  }
+  nav ul{
+    list-style:none; display:flex; gap:36px; margin:0; padding:0;
+  }
+  nav ul li a{
+    text-decoration:none;
+    font-size:14.5px;
+    color:var(--muted);
+    transition:color 0.2s ease;
+  }
+  nav ul li a:hover{ color:var(--ink); }
+  .pill{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.02em;
+    text-decoration:none;
+    border-radius:var(--radius-pill);
+    padding:11px 22px;
+    white-space:nowrap;
+    transition:background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .pill-outline{
+    border:1.5px solid var(--ink);
+    color:var(--ink);
+    background:transparent;
+  }
+  .pill-outline:hover{ background:var(--ink); color:var(--bg); }
+  .pill-solid{
+    background:var(--ink);
+    color:var(--bg);
+    border:1.5px solid var(--ink);
+    font-weight:600;
+  }
+  .pill-solid:hover{ background:transparent; color:var(--ink); }
+  .nav-links{ display:flex; align-items:center; gap:36px; }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding:110px 0 100px; }
+  .hero .kicker{ margin-bottom:28px; }
+  .hero h1{
+    font-size:clamp(44px, 7.2vw, 96px);
+    max-width:15ch;
+    font-weight:700;
+  }
+  .hero .lede{
+    margin-top:32px;
+    max-width:52ch;
+    font-size:19px;
+    color:var(--muted);
+  }
+  .hero .lede strong{ color:var(--ink); font-weight:600; }
+  .hero .cta-row{ margin-top:40px; display:flex; gap:16px; flex-wrap:wrap; }
+
+  /* ---------- Philosophy ---------- */
+  .philosophy{ padding:90px 0; border-top:1px solid var(--rule-soft); }
+  .philosophy-grid{
+    display:grid;
+    grid-template-columns:1fr 1.3fr;
+    gap:64px;
+  }
+  .philosophy-grid .pull{
+    margin:0;
+    font-size:clamp(26px,3vw,36px);
+    font-weight:600;
+    letter-spacing:-0.02em;
+    line-height:1.28;
+    color:var(--ink);
+  }
+  .philosophy-grid .body p{
+    margin:0 0 20px;
+    color:var(--muted);
+    font-size:16.5px;
+    max-width:58ch;
+  }
+  .philosophy-grid .body p:last-child{ margin-bottom:0; }
+  .philosophy-grid .body strong{ color:var(--ink); font-weight:600; }
+
+  /* ---------- Section headings ---------- */
+  .section-head{ margin-bottom:56px; }
+  .section-head h2{
+    font-size:clamp(30px,4vw,48px);
+    margin-top:16px;
+    max-width:20ch;
+    font-weight:700;
+  }
+
+  section{ padding:96px 0; }
+  section.alt{ background:var(--surface); border-top:1px solid var(--rule-soft); border-bottom:1px solid var(--rule-soft); }
+
+  /* ---------- Progression strip ---------- */
+  .progression{
+    display:flex; align-items:center; justify-content:center;
+    gap:16px; margin:0 0 60px; flex-wrap:wrap;
+  }
+  .progression .step{
+    font-size:13px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--muted); padding:8px 4px; font-weight:600;
+  }
+  .progression .arrow{ color:var(--muted-dim); font-size:15px; }
+
+  /* ---------- Pricing cards ---------- */
+  .tiers{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .tier{
+    background:var(--surface);
+    border:1px solid var(--rule);
+    border-radius:var(--radius-card);
+    padding:40px 32px;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+  }
+  .tier.is-noted{ background:var(--surface-raised); border-color:rgba(255,255,255,0.28); }
+  .tier-index{
+    font-size:13px; color:var(--muted); letter-spacing:0.06em; margin-bottom:20px;
+  }
+  .tier-tag{
+    position:absolute; top:40px; right:32px;
+    font-size:11px; font-weight:600; letter-spacing:0.04em;
+    color:var(--ink);
+    border:1px solid var(--rule);
+    border-radius:var(--radius-pill);
+    padding:5px 12px;
+  }
+  .tier h3{ font-size:24px; margin-bottom:8px; font-weight:700; }
+  .tier .tier-line{ font-size:15px; color:var(--muted); margin-bottom:30px; }
+  .tier .price{
+    font-size:56px; font-weight:700; letter-spacing:-0.03em;
+    margin-bottom:2px; font-variant-numeric:tabular-nums;
+  }
+  .tier .price sup{ font-size:16px; font-weight:500; color:var(--muted); top:-1.6em; }
+  .tier .price-compact{ font-size:38px; white-space:nowrap; }
+  .tier .price-compact sup{ font-size:14px; }
+  .tier .price-sub{ font-size:13px; color:var(--muted-dim); margin-bottom:8px; min-height:16px; }
+  .tier .setup{
+    font-size:13.5px; color:var(--muted);
+    padding-bottom:26px; margin-bottom:26px;
+    border-bottom:1px solid var(--rule);
+  }
+  .tier .col-label{
+    font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--muted-dim); margin:0 0 12px; font-weight:600;
+  }
+  .tier ul{ list-style:none; margin:0 0 26px; padding:0; }
+  .tier ul li{
+    font-size:14.5px; color:var(--ink);
+    padding:8px 0; display:flex; gap:10px; align-items:flex-start;
+  }
+  .tier ul li::before{ content:"\2713"; color:var(--muted); flex:none; padding-top:1px; }
+  .tier .provide-block li::before{ content:"\2192"; color:var(--muted-dim); }
+  .tier .provide-block{ margin-bottom:6px; }
+  .tier .volume{
+    font-size:13.5px; color:var(--muted);
+    margin-top:auto; padding-top:20px; border-top:1px solid var(--rule);
+  }
+  .tier .cta-line{ margin-top:24px; }
+  .tier .cta-line a{
+    font-size:13.5px; font-weight:600; text-decoration:none;
+    color:var(--ink); border-bottom:1px solid var(--ink); padding-bottom:2px;
+  }
+  .tier .cta-line a:hover{ color:var(--muted); border-color:var(--muted); }
+
+  .tiers-foot-note{
+    max-width:74ch; margin:44px auto 0; text-align:center;
+    font-size:18px; font-weight:500; color:var(--muted); line-height:1.5;
+  }
+
+  /* ---------- Responsibility table ---------- */
+  .resp-table-wrap{ overflow-x:auto; }
+  table.resp{ width:100%; border-collapse:collapse; min-width:640px; }
+  table.resp caption{ text-align:left; margin-bottom:20px; }
+  table.resp th, table.resp td{
+    text-align:left; padding:17px 18px; border-bottom:1px solid var(--rule-soft); font-size:14.5px;
+  }
+  table.resp thead th{
+    font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--muted); border-bottom:1px solid var(--rule); padding-bottom:16px; font-weight:600;
+  }
+  table.resp tbody th{ font-weight:600; color:var(--ink); }
+  table.resp td{ color:var(--muted); }
+  table.resp tbody tr:hover td, table.resp tbody tr:hover th{ background:rgba(255,255,255,0.03); }
+
+  /* ---------- Add-ons ---------- */
+  .addon-list{ margin-top:8px; }
+  .addon{
+    padding:36px 0; border-bottom:1px solid var(--rule-soft);
+    display:grid; grid-template-columns:1fr 1.6fr auto; gap:28px; align-items:start;
+  }
+  .addon:first-child{ border-top:1px solid var(--rule-soft); }
+  .addon h3{ font-size:21px; font-weight:600; }
+  .addon p{ margin:8px 0 0; color:var(--muted); font-size:14.5px; max-width:52ch; }
+  .addon .price-tag{
+    font-size:14px; font-weight:600; color:var(--ink);
+    text-align:right; white-space:nowrap; padding-top:4px;
+  }
+  .addon .price-tag small{ display:block; color:var(--muted); font-size:12px; margin-top:4px; font-weight:400; }
+
+  .addons-note{ margin-top:36px; font-size:14.5px; color:var(--muted); max-width:70ch; }
+
+  /* ---------- How we start ---------- */
+  .steps{ margin-top:8px; }
+  .step-item{
+    display:grid; grid-template-columns:64px 1fr; gap:26px;
+    padding:32px 0; border-top:1px solid var(--rule-soft);
+  }
+  .steps .step-item:last-child{ border-bottom:1px solid var(--rule-soft); }
+  .step-item .num{ font-size:15px; color:var(--muted); font-weight:600; padding-top:4px; }
+  .step-item h3{ font-size:20px; margin-bottom:8px; font-weight:600; }
+  .step-item p{ margin:0; color:var(--muted); font-size:15px; max-width:60ch; }
+
+  /* ---------- FAQ ---------- */
+  .faq{ max-width:860px; }
+  details.faq-item{ border-bottom:1px solid var(--rule-soft); }
+  details.faq-item:first-child{ border-top:1px solid var(--rule-soft); }
+  details.faq-item summary{
+    list-style:none; cursor:pointer; padding:28px 0;
+    display:flex; align-items:center; justify-content:space-between; gap:24px;
+  }
+  details.faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-num{ font-size:14px; color:var(--muted); margin-right:20px; font-weight:600; }
+  .faq-q{ font-size:19px; font-weight:600; flex:1; }
+  details.faq-item summary .ind{
+    font-size:22px; color:var(--muted); flex:none; line-height:1;
+    transition:transform 0.25s ease;
+  }
+  details.faq-item[open] summary .ind{ transform:rotate(45deg); }
+  details.faq-item .faq-body{
+    padding:0 0 30px 34px; max-width:66ch; color:var(--muted); font-size:15.5px;
+  }
+  details.faq-item .faq-body p{ margin:0 0 12px; }
+  details.faq-item .faq-body p:last-child{ margin-bottom:0; }
+
+  /* ---------- CTA ---------- */
+  .cta-section{ padding:120px 0; }
+  .cta-section h2{
+    font-size:clamp(34px,5vw,58px); max-width:16ch; margin:0 0 26px; font-weight:700;
+  }
+  .cta-section p{ max-width:56ch; margin:0 0 40px; color:var(--muted); font-size:17px; }
+  .cta-sub{ margin-top:24px; font-size:13.5px; color:var(--muted); }
+
+  /* ---------- Footer ---------- */
+  footer{ border-top:1px solid var(--rule-soft); padding:56px 0 64px; }
+  .footer-grid{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    flex-wrap:wrap; gap:48px;
+  }
+  footer .foot-left{ font-size:13px; color:var(--muted); line-height:1.9; }
+  footer .foot-left .copy{ color:var(--ink); font-weight:600; letter-spacing:0.02em; }
+  footer .foot-left a{ text-decoration:none; color:var(--muted); }
+  footer .foot-left a:hover{ color:var(--ink); }
+  .signature{
+    font-family:'Source Code Pro',monospace;
+    font-size:14.5px;
+    line-height:2;
+    color:var(--ink);
+    text-align:right;
+  }
+  .signature .line{ color:var(--muted); }
+  .signature .line::before{ content:"> "; color:var(--muted-dim); }
+  .signature a{ text-decoration:underline; text-decoration-color:var(--rule); color:var(--ink); }
+  .signature a:hover{ text-decoration-color:var(--ink); }
+  .signature .comment{ color:var(--muted-dim); margin-top:10px; }
+  .signature .comment::before{ content:"// "; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px){
+    .philosophy-grid{ grid-template-columns:1fr; gap:32px; }
+    .tiers{ grid-template-columns:1fr; }
+    .addon{ grid-template-columns:1fr; }
+    .addon .price-tag{ text-align:left; }
+    .footer-grid{ flex-direction:column; align-items:flex-start; }
+    .signature{ text-align:left; }
+    .signature .line::before, .signature .comment::before{ content:""; }
+  }
+  @media (max-width: 720px){
+    .wrap{ padding:0 24px; }
+    .nav-links nav{ display:none; }
+    .nav{ height:auto; padding-top:16px; padding-bottom:16px; }
+    .pill{ padding:9px 16px; font-size:12px; }
+    .hero{ padding:80px 0 64px; }
+    section{ padding:68px 0; }
+    .step-item{ grid-template-columns:36px 1fr; }
+    .cta-section{ padding:88px 0; }
+  }
+
+  /* ---------- Print ---------- */
+  @media print{
+    header{ position:static; backdrop-filter:none; }
+    .pill, .cta-section .cta-sub{ display:none; }
+    body{ background:#fff; color:#000; }
+    section.alt{ background:#fff; }
+    a{ text-decoration:none; color:#000; }
+    .tier, .kicker::before, .signature .line::before, .signature .comment::before{ color:#000; }
+    details.faq-item summary .ind{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header>
+  <div class="wrap nav">
+    <a class="wordmark" href="#top">hush hush ltd.</a>
+    <div class="nav-links">
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#philosophy">philosophy</a></li>
+          <li><a href="#pricing">services</a></li>
+          <li><a href="#faq">faq</a></li>
+        </ul>
+      </nav>
+      <a class="pill pill-outline" href="#contact">start a conversation</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <span class="kicker">creative intelligence for growing brands</span>
+      <h1>Make meaning,<br>not noise.</h1>
+      <p class="lede">Hush Hush helps businesses refine their voice, sharpen their presence, and communicate on purpose. <strong>Not louder. More intentional.</strong> Below is how we work together, and what each level of involvement actually means.</p>
+      <div class="cta-row">
+        <a class="pill pill-outline" href="#pricing">see the tiers</a>
+        <a class="pill pill-solid" href="#contact">start a conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">services &amp; pricing</span>
+        <h2>Three levels of involvement. What changes between them is responsibility, not just volume.</h2>
+      </div>
+
+      <div class="progression" aria-hidden="true">
+        <span class="step">Coordinate</span>
+        <span class="arrow">&rarr;</span>
+        <span class="step">Shape</span>
+        <span class="arrow">&rarr;</span>
+        <span class="step">Build</span>
+      </div>
+
+      <div class="tiers">
+
+        <!-- TIER 1 -->
+        <article class="tier">
+          <div class="tier-index">01 &nbsp;/&nbsp; coordinate</div>
+          <h3>Coordination</h3>
+          <p class="tier-line">You make it. We publish it.</p>
+          <p class="price">$425<sup>/mo</sup></p>
+          <p class="price-sub">roughly $100 a week</p>
+          <p class="setup">$300 one-time setup</p>
+
+          <p class="col-label">You provide</p>
+          <ul class="provide-block">
+            <li>Finished photos, graphics, and video</li>
+            <li>Captions or approved copy</li>
+            <li>Links, promotions, project details</li>
+            <li>Final approval on anything we schedule</li>
+          </ul>
+
+          <p class="col-label">We provide</p>
+          <ul>
+            <li>Scheduling and publishing across Facebook, Instagram, and LinkedIn</li>
+            <li>Calendar upkeep, formatting, tags, links, locations</li>
+            <li>Inbox monitoring: flagging what needs your reply</li>
+            <li>Google review monitoring</li>
+            <li>Basic analytics access and a monthly snapshot</li>
+          </ul>
+
+          <p class="volume">Up to 20 scheduled pieces a month, reasonable cross-posting included. Not included: content creation, copywriting, design, editing, strategy, or responding on your behalf.</p>
+          <p class="cta-line"><a href="#contact">Start with Coordination &rarr;</a></p>
+        </article>
+
+        <!-- TIER 2 -->
+        <article class="tier is-noted">
+          <span class="tier-tag">Where most clients start</span>
+          <div class="tier-index">02 &nbsp;/&nbsp; shape</div>
+          <h3>Shaping</h3>
+          <p class="tier-line">You give us the raw material. We turn it into a presence.</p>
+          <p class="price">$900<sup>/mo</sup></p>
+          <p class="price-sub">&nbsp;</p>
+          <p class="setup">$400 one-time setup</p>
+
+          <p class="col-label">You provide</p>
+          <ul class="provide-block">
+            <li>Raw photos, short clips, project updates</li>
+            <li>News, promotions, subject-matter expertise</li>
+            <li>Whatever's happening that's worth saying</li>
+          </ul>
+
+          <p class="col-label">We provide</p>
+          <ul>
+            <li>Everything in Coordination</li>
+            <li>A monthly content calendar we build, not just maintain</li>
+            <li>Caption writing, from your material</li>
+            <li>Asset selection and recurring theme development</li>
+            <li>Light photo adjustment and simple templated formatting</li>
+            <li>Comment and DM responses in your voice, sensitive items escalated to you</li>
+            <li>Monthly analytics report with plain-language recommendations</li>
+            <li>One monthly check-in, plus high-level ad performance reporting</li>
+          </ul>
+
+          <p class="volume">Typically 16 to 24 pieces of shaped content a month. The value here isn't the count, it's that we're now responsible for turning what you hand us into something coherent.</p>
+          <p class="cta-line"><a href="#contact">Start with Shaping &rarr;</a></p>
+        </article>
+
+        <!-- TIER 3 -->
+        <article class="tier">
+          <div class="tier-index">03 &nbsp;/&nbsp; build</div>
+          <h3>Partnership</h3>
+          <p class="tier-line">We help decide what's made, then build the system around it.</p>
+          <p class="price price-compact">From $1,500<sup>/mo</sup></p>
+          <p class="price-sub">scoped to what you need</p>
+          <p class="setup">From $500 one-time setup</p>
+
+          <p class="col-label">You provide</p>
+          <ul class="provide-block">
+            <li>Access to the business and its people</li>
+            <li>Trust to make editorial calls on your behalf</li>
+          </ul>
+
+          <p class="col-label">We provide</p>
+          <ul>
+            <li>Everything in Shaping</li>
+            <li>Proactive editorial planning: deciding what's worth telling</li>
+            <li>One on-site content session a month</li>
+            <li>2 to 4 edited short-form videos or Reels</li>
+            <li>Before/after, process, team, and testimonial storytelling</li>
+            <li>Fuller community management</li>
+            <li>Monthly strategy meeting, quarterly planning</li>
+            <li>An organized content library, yours to keep</li>
+          </ul>
+
+          <p class="volume">A typical month: 16 to 20 planned pieces, one shoot, a few edited videos. Final scope is set with you, not off a fixed menu.</p>
+          <p class="cta-line"><a href="#contact">Start a conversation &rarr;</a></p>
+        </article>
+
+      </div>
+
+      <p class="tiers-foot-note">If what you need starts outgrowing your package, we'll talk about expanding the scope directly. Nothing gets quietly absorbed, and nothing gets quietly withheld.</p>
+    </div>
+  </section>
+
+  <!-- RESPONSIBILITY TABLE -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">how responsibility shifts</span>
+        <h2>Same channels. Different amount of us in the work.</h2>
+      </div>
+      <div class="resp-table-wrap">
+        <table class="resp">
+          <caption class="kicker">who's responsible, by tier</caption>
+          <thead>
+            <tr>
+              <th scope="col">Area</th>
+              <th scope="col">Coordination</th>
+              <th scope="col">Shaping</th>
+              <th scope="col">Partnership</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Content creation</th><td>You</td><td>You supply, we shape</td><td>Shared, planned together</td></tr>
+            <tr><th scope="row">Photography &amp; video</th><td>You</td><td>You supply the raw footage</td><td>We capture it on-site</td></tr>
+            <tr><th scope="row">Captions</th><td>You</td><td>We write, from your material</td><td>We write</td></tr>
+            <tr><th scope="row">Scheduling &amp; publishing</th><td>We do</td><td>We do</td><td>We do</td></tr>
+            <tr><th scope="row">Comments &amp; DMs</th><td>We flag for you</td><td>We respond, escalate what matters</td><td>We manage fully</td></tr>
+            <tr><th scope="row">Strategy &amp; planning</th><td>Not included</td><td>Monthly check-in</td><td>Proactive, ongoing</td></tr>
+            <tr><th scope="row">Analytics</th><td>Simple snapshot</td><td>Monthly report</td><td>Monthly report &amp; quarterly review</td></tr>
+            <tr><th scope="row">Paid ad performance</th><td>Not included</td><td>Reporting only</td><td>Reporting only</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="addons-note">Paid ad <em>management</em>, meaning building and running campaigns, is a separate service in every tier. Reporting on how your ads are doing is not the same job as deciding how your budget gets spent, and we keep those two things priced apart.</p>
+    </div>
+  </section>
+
+  <!-- ADD-ONS -->
+  <section id="production">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">beyond the retainer</span>
+        <h2>A few things we scope separately, on purpose.</h2>
+      </div>
+
+      <div class="addon-list">
+
+        <div class="addon">
+          <h3>On-Site Content Production</h3>
+          <p>Project, progress, and finished-work photography. Team and detail imagery. Behind-the-scenes and short-form video capture, shot on location.</p>
+          <div class="price-tag">$150/hr<small>2-hour minimum</small></div>
+        </div>
+
+        <div class="addon">
+          <h3>Video Editing</h3>
+          <p>Filming and editing are two different jobs, priced separately. A simple social Reel from footage you already have runs $125&ndash;175. Something more developed runs $200&ndash;350+. Longer walkthroughs or testimonials are quoted once we see the footage.</p>
+          <div class="price-tag">$85/hr<small>or flat-rate by scope</small></div>
+        </div>
+
+        <div class="addon">
+          <h3>Paid Advertising Management</h3>
+          <p>Campaign development, targeting, budget allocation, creative coordination, testing, and optimization. Different discipline from the ad reporting included in Shaping and Partnership.</p>
+          <div class="price-tag">Custom scope</div>
+        </div>
+
+        <div class="addon">
+          <h3>Additional Services</h3>
+          <p>Extra photography sessions, graphic design, email marketing, campaign development, brand strategy, website or case-study content, and other creative work as it comes up.</p>
+          <div class="price-tag">By project</div>
+        </div>
+
+      </div>
+
+      <p class="addons-note">A half-day production session (roughly 3&ndash;4 hours) runs about $500&ndash;650. Full-day or larger productions are quoted once we know what you're after.</p>
+    </div>
+  </section>
+
+  <!-- HOW WE START -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">how we start</span>
+        <h2>Nothing here begins with a contract.</h2>
+      </div>
+      <div class="steps">
+        <div class="step-item">
+          <span class="num">01</span>
+          <div>
+            <h3>A conversation, not a pitch</h3>
+            <p>Tell me what you're currently doing, what's getting neglected, and what you'd like off your plate. No deck, no assumptions about what you need.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="num">02</span>
+          <div>
+            <h3>We find the smallest useful scope</h3>
+            <p>Together we land on the level of involvement that actually solves your problem, not the biggest package available.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="num">03</span>
+          <div>
+            <h3>A 30-day start</h3>
+            <p>Engagements begin with a 30-day initial period, so both of us can see the workflow in practice before committing further.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="num">04</span>
+          <div>
+            <h3>Scope moves with you</h3>
+            <p>As the work reveals where more support would help, we talk about expanding it, rather than letting extra work pile up quietly under the old agreement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section>
+    <div class="wrap philosophy-grid">
+      <p class="pull">These people are active. They do good work. They know what they're doing.</p>
+      <div class="body">
+        <p>We don't sell this around follower counts. For most of the businesses we work with (contractors, architects, restaurants, local service and professional work) social media isn't a growth channel so much as it's <strong>proof</strong>. Someone hears about you through a referral, looks you up, and decides in about ten seconds whether they trust you.</p>
+        <p>A consistent, well-organized presence is what tips that decision. It says the business is active, the work is real, and someone's paying attention. That's the outcome we're building toward: not virality, not a follower number, not a guaranteed lead count. A body of work someone can look at and trust.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="alt" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">clarifications</span>
+        <h2>A few things worth knowing up front.</h2>
+      </div>
+
+      <div class="faq">
+        <details class="faq-item">
+          <summary><span class="faq-q"><span class="faq-num">01</span>Do I need to sign a long-term contract?</span><span class="ind">+</span></summary>
+          <div class="faq-body"><p>No. Engagements start with a 30-day initial period so we can both see how the workflow works in practice before talking about anything longer.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span class="faq-q"><span class="faq-num">02</span>What if I need something outside my package?</span><span class="ind">+</span></summary>
+          <div class="faq-body"><p>One-off needs get quoted separately. If it turns into a pattern rather than a one-time thing, we'll talk about moving you into a different level of service instead of quietly stacking extra work onto the existing agreement.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span class="faq-q"><span class="faq-num">03</span>Do you guarantee follower growth?</span><span class="ind">+</span></summary>
+          <div class="faq-body"><p>No, and I'd be skeptical of anyone who does. Performance depends on far more than posting consistency. What I can build is a presence that's consistent, credible, and useful to someone deciding whether to trust you, which matters more than a follower count anyway.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span class="faq-q"><span class="faq-num">04</span>Do I need to provide content?</span><span class="ind">+</span></summary>
+          <div class="faq-body"><p>Depends on the tier. Coordination assumes you're handing over finished material. Shaping assumes you're handing over raw material and we do the shaping. Partnership includes us coming to you to capture some of that material ourselves.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span class="faq-q"><span class="faq-num">05</span>Can you manage my advertising?</span><span class="ind">+</span></summary>
+          <div class="faq-body"><p>Monitoring how your ads are performing and actively managing them are different jobs. Reporting is folded into Shaping and Partnership; full campaign management is scoped and priced separately once we know what you're trying to do.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span class="faq-q"><span class="faq-num">06</span>Can you come photograph our business or projects?</span><span class="ind">+</span></summary>
+          <div class="faq-body"><p>Yes. On-site production is available on its own, or built into a Partnership engagement as a standing monthly session.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span class="faq-q"><span class="faq-num">07</span>What's Metricool, and do I need my own account?</span><span class="ind">+</span></summary>
+          <div class="faq-body"><p>It's the scheduling, inbox, and analytics infrastructure Hush Hush runs on. Most clients are simply added as a managed brand under the Hush Hush account, no extra subscription required. If you'd rather keep your own account, that works too.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy" id="philosophy">
+    <div class="wrap philosophy-grid">
+      <p class="pull">Your marketing problem and your marketing budget are two different things.</p>
+      <div class="body">
+        <p>Most of the businesses we talk to don't need more marketing. They need marketing that fits the size of the problem they actually have, not the size of the industry that sells to them.</p>
+        <p>So Hush Hush doesn't start with a package built to look impressive. It starts with the smallest useful scope: <strong>the level of involvement that solves what's actually going on.</strong> If your content is good but nobody's organizing and publishing it, that's a small problem with a small solution. If you don't have the time or eye to turn what's happening in your business into something worth posting, that's a different, larger job, and it costs more because more of it is now ours to do.</p>
+        <p>Start with the fundamentals. Get the system working. Then invest further once the work itself shows you where more support would actually help, not before.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contact">
+    <div class="wrap">
+      <span class="kicker">get in touch</span>
+      <h2 style="margin-top:20px;">Start with what you actually need.</h2>
+      <p>Tell me what you're currently doing, what's getting neglected, and what you'd like off your plate. We'll figure out the smallest useful scope together and build from there.</p>
+      <a class="pill pill-solid" href="mailto:haley@hydemont.org?subject=Hush%20Hush%3A%20let%27s%20talk">start a conversation</a>
+      <p class="cta-sub">haley@hydemont.org &nbsp;·&nbsp; Longmont, Colorado</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div class="foot-left">
+      <div class="copy">&copy; HUSH HUSH LTD</div>
+      <div style="margin-top:8px;">Longmont, Colorado</div>
+      <div><a href="#top">back to top</a></div>
+    </div>
+    <div class="signature">
+      <div class="line">haley_hyde</div>
+      <div class="line">hush_hush_ltd</div>
+      <div class="line"><a href="https://www.hushhush.ltd/">hushhush.ltd</a></div>
+      <div class="comment">make meaning, not noise</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    // Force-open FAQ items for clean printing, then restore
+    var openBeforePrint = [];
+    window.addEventListener('beforeprint', function(){
+      openBeforePrint = [];
+      document.querySelectorAll('details.faq-item').forEach(function(d){
+        openBeforePrint.push(d.open);
+        d.open = true;
+      });
+    });
+    window.addEventListener('afterprint', function(){
+      document.querySelectorAll('details.faq-item').forEach(function(d, i){
+        d.open = openBeforePrint[i];
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
